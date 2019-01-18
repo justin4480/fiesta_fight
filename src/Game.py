@@ -1,44 +1,22 @@
-import random
-import pandas as pd
-from src.Character import Character
+from src.CharacterUniverse import CharacterUniverse
 
 
 class Game:
 
     def __init__(self):
         self.score = 0
-        self.characters = generate_pokemon_characters()
+        self.characters = CharacterUniverse()
+        self.player = self.characters.get_character()
+        self.ai = self.characters.get_character()
 
     def run(self):
-        characters = generate_pokemon_characters()
+        print(
+            'Health', '[', '*' * int(self.player.get_health()/5), ']',
+            self.print_buffer(50),
+            'Health', '[', '*' * int(self.player.get_health()/5), ']',
+        )
+        print(self.player.get_name(), '(Player)', self.print_buffer(18), self.ai.get_name(), '(AI)')
 
-        for i in range(10):
-            print(characters[i].speak())
-
-
-def generate_random_stats():
-    rand_numbers = []
-    for _ in range(3-1):
-        rand_numbers.append(random.randint(0, 15-sum(rand_numbers)))
-        random.shuffle(rand_numbers)
-
-    rand_numbers.append(15 - sum(rand_numbers))
-
-    return {
-        'attack': rand_numbers[0],
-        'defense': rand_numbers[1],
-        'stamina': rand_numbers[2]
-    }
-
-
-def generate_pokemon_characters():
-
-    pokemon_names = pd.read_csv("assets/pokemon_names.txt", sep='\n').values.tolist()
-    character_list = []
-
-    for name in pokemon_names:
-        character_list.append(Character(name[0], generate_random_stats()))
-
-    random.shuffle(character_list)
-
-    return character_list
+    def print_buffer(self, subtract):
+        name_length = len(self.player.get_name()) + len(self.ai.get_name())
+        return str(' ' * (80 - name_length - subtract))

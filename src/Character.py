@@ -15,8 +15,20 @@ class Character:
     def __str__(self):
         return self.name
 
-    def speak(self):
-        return str("Hi I'm " + self.name + " and my stats are: " + str(self.stats))
+    def get_name(self):
+        return self.name
+
+    def get_stats(self):
+        return self.stats
+
+    def get_health(self):
+        return self.health
+
+    def injure(self, hit_amount):
+        self.health = - hit_amount
+
+    def respawn(self):
+        self.health = 100
 
     def level_up(self, max_level):
         if self.level < max_level:
