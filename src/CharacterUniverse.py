@@ -22,15 +22,11 @@ class CharacterUniverse:
 
 
 def generate_random_stats():
-    rand_numbers = []
-    for _ in range(3 - 1):
-        rand_numbers.append(randint(0, 15 - sum(rand_numbers)))
-        shuffle(rand_numbers)
 
-    rand_numbers.append(15 - sum(rand_numbers))
+    stats = {}
 
-    return {
-        'attack': rand_numbers[0],
-        'defense': rand_numbers[1],
-        'stamina': rand_numbers[2]
-    }
+    stats["Attack"] = randint(5, 10)
+    stats["Defense"] = 15 - stats["Attack"]
+    stats["Stamina"] = randint(1, 10)
+
+    return stats
