@@ -25,7 +25,7 @@ class Character:
         return self.health
 
     def injure(self, hit_amount):
-        self.health = - hit_amount
+        self.health -= hit_amount
 
     def respawn(self):
         self.health = 100
