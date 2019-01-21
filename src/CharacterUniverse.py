@@ -25,7 +25,7 @@ def generate_random_stats():
 
     stats = {}
 
-    stats["Attack"] = randint(5, 10)
-    stats["Defense"] = 15 - stats["Attack"]
+    stats["attack"] = randint(5, 10)
+    stats["defense"] = 15 - stats["attack"]
 
     return stats

@@ -3,7 +3,8 @@ from src.Game import Game
 
 def main():
 
-    game = Game()
+    player_name = input('Player 1, enter your name: ')
+    game = Game(player_name)
     game.run()
 
 
